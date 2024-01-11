@@ -33,7 +33,7 @@ Isso abrirá a aplicação no navegador.
 
 ## Exemplo Gerado
 
-A semente (seed) `0.6253610151660418` gerou a seguinte árvore:
+A semente (seed) `0.6253610151660418` gera a seguinte árvore:
 
 ![Exemplo de Árvore](https://github.com/AldenorNeto/Tree-generate/assets/74365018/b04db1c6-0895-439a-8a40-b7678fa5943e)
 
