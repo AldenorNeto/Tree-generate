@@ -111,10 +111,6 @@ class Branch {
                     '0.' + (Number(this.pi[Number(this.stringSeed[2])]) + Number(this.stringSeed[Number(this.stringSeed[6])]))
                 )
             );
-            if (this.stalk) {
-                console.log({ firstSeed1, firstSeed2 });
-
-            }
 
             new Branch({
                 coord: this.calculatedEnd,
