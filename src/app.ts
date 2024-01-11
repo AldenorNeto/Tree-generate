@@ -18,10 +18,21 @@ interface BranchProps {
 }
 
 class SeedGenerate {
+    private seed: number;
+
+    constructor() {
+        this.seed = Math.random();
+        const showSeed = document.createElement("div");
+        
+        showSeed.style.left = `${0}px`;
+        showSeed.style.top = `${0}px`;
+        showSeed.innerHTML = `SEED: ${this.seed}`;
+
+        document.body.appendChild(showSeed);
+    }
+
     firstSeed(): number {
-        const dsa = Math.random();
-        console.log(dsa);
-        return dsa
+        return this.seed
     }
 }
 
@@ -36,7 +47,9 @@ class Circle {
         this.centerY = centerY;
         this.radius = radius;
         this.circleElement = this.createCircleElement();
-        document.body.appendChild(this.circleElement);
+        if(centerX || centerY){
+            document.body.appendChild(this.circleElement);
+        }
     }
 
     private createCircleElement(): HTMLDivElement {
@@ -85,7 +98,9 @@ class Branch {
         this.calculatedEnd = this.calculateEndCoordinates();
         this.pi = Math.PI.toString().replace('.', '');
 
-        document.body.appendChild(this.branchElement);
+        if(this.startX || this.startY){
+            document.body.appendChild(this.branchElement);
+        }
         const { seedShuffled, angleVariant } = this.seedShuffled()
 
         if (depth) {
@@ -197,7 +212,7 @@ const screenHeight = window.innerHeight * 0.8;  // 80% da altura da tela
 // Profundidade da árvore
 const profundidadeArvore = 10;  // Valor que renderiza um número quadrado de ramos
 
-const seedGenerate = new SeedGenerate();
+const seedGenerate = new SeedGenerate().firstSeed();
 
 // Criação do chão
 new Floor(screenHeight - profundidadeArvore);
@@ -208,6 +223,6 @@ new Branch({
     angle: 240,  // Ângulo inicial da ramificação
     length: 150,  // Comprimento do tronco principal
     depth: profundidadeArvore,
-    firstSeed: seedGenerate.firstSeed(),
+    firstSeed: seedGenerate,
     stalk: true,  // Indica que é o tronco principal
 });
